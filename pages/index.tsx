@@ -1,8 +1,8 @@
 import React from 'react';
 
 const HomePage: React.FC = () => (
-  <div>
-    Welcome to Next.js!
+  <div className="bg-slate-700">
+    Welcome to Next.js! !!sdsd
   </div>
 );
 
