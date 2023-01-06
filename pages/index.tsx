@@ -1,5 +1,6 @@
-import Link from 'next/link';
+import Head from 'next/head';
 import React, { useState } from 'react';
+import Button from '../components/Button';
 import { useSearchUsersQuery } from '../store/github/github.api';
 
 const HomePage: React.FC = () => {
@@ -20,12 +21,18 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="flex flex-col bg-slate-700 p-2 h-screen">
-      <Link
+      <Head>
+        <title>Тест Некст</title>
+        <meta
+          content="next"
+          name="keywords"
+        />
+      </Head>
+      <Button.Link
         className="p-2 bg-green-400 w-min rounded-md text-white font-bold"
         href="login"
-      >
-        Авторизация
-      </Link>
+        title=" Авторизация"
+      />
       <div className="flex justify-between items-center text-white">
         <h1 className="text-xl">Поиск пользователей в Github</h1>
         <div>
@@ -37,20 +44,16 @@ const HomePage: React.FC = () => {
               onChange={(v) => setSearchInputValue(v.target.value)}
               value={searchInputValue || ''}
             />
-            <button
+            <Button.Base
               className="p-2 bg-purple-400"
               onClick={searchUsersHandler}
-              type="button"
-            >
-              Поиск
-            </button>
-            <button
+              title="Поиск"
+            />
+            <Button.Base
               className="p-2 bg-purple-500"
               onClick={clearSearchValuesHandler}
-              type="button"
-            >
-              Очистить
-            </button>
+              title=" Очистить"
+            />
           </div>
         </div>
       </div>
