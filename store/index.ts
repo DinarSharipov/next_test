@@ -1,35 +1,9 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { githubApi } from './github/github.api';
 
-interface State {
-  icon: string;
-}
-
-const initialState: State = {
-  icon: 'moon',
-};
-
-// create a slice
-export const iconslice = createSlice({
-  name: 'icon',
-  initialState,
-  reducers: {
-    iconMoon: () => {
-      initialState.icon = 'moon';
-    },
-    iconSun: () => {
-      initialState.icon = 'sun';
-    },
-  },
-});
-// config the store
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    icon: iconslice.reducer,
+    [githubApi.reducerPath]: githubApi.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(githubApi.middleware),
 });
-
-// export default the store
-export default store;
-
-// export the action
-export const iconAction = iconslice.actions;
