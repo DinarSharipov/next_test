@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import React from 'react';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import store from '../store/index';
+import { store } from '../store/index';
 
 const App = ({ Component, pageProps }: AppProps) => (
   <Provider store={store}>
