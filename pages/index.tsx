@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import Button from '../components/Button';
 import { useSearchUsersQuery } from '../store/github/github.api';
+import Input from '../components/Input';
 
 const HomePage: React.FC = () => {
   const [searchInputValue, setSearchInputValue] = useState<string | undefined>();
@@ -36,12 +37,12 @@ const HomePage: React.FC = () => {
       <div className="flex justify-between items-center text-white">
         <h1 className="text-xl">Поиск пользователей в Github</h1>
         <div>
-          <h4>Введите имя пользователя</h4>
           <div className="flex overflow-hidden rounded-md w-min">
-            <input
+            <Input.Number
               className="text-black p-1 outline-none"
-              is="search"
-              onChange={(v) => setSearchInputValue(v.target.value)}
+              id="search"
+              onChange={(value) => setSearchInputValue(value)}
+              placeholder="имя пользователя"
               value={searchInputValue || ''}
             />
             <Button.Base
