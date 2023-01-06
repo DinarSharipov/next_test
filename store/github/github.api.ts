@@ -16,7 +16,16 @@ export const githubApi = createApi({
         },
       }),
     }),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getUserRepos: build.query<any, string>({
+      query: (username: string) => ({
+        url: `users/${username}/repos`,
+      }),
+    }),
   }),
 });
 
-export const { useSearchUsersQuery } = githubApi;
+export const {
+  useSearchUsersQuery,
+  useLazyGetUserReposQuery,
+} = githubApi;
