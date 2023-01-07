@@ -6,7 +6,9 @@ export interface BaseInputProps {
   className?: string;
   placeholder?: string;
   label?: ReactNode;
+  postfix?: ReactNode;
   onChange?: (value: string)=> void;
   onBlur?: (value?: string)=> void;
   onKeyEnter?: ()=> void;
+  _type?: 'text' | 'date';
 }

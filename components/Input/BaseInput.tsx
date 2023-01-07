@@ -10,6 +10,8 @@ const BaseInput: React.FC<BaseInputProps> = ({
   onKeyEnter,
   placeholder,
   value,
+  _type,
+  postfix,
 }) => {
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -32,16 +34,19 @@ const BaseInput: React.FC<BaseInputProps> = ({
   return (
     <div className="flex flex-col">
       { label && <div>{label}</div> }
-      <input
-        className={`${className} flex-1`}
-        id={id}
-        onBlur={onBlurHandler}
-        onChange={onChangeHandler}
-        onKeyDown={onKeyDownHandler}
-        placeholder={placeholder}
-        type="text"
-        value={value || ''}
-      />
+      <div className="flex items-center flex-1">
+        <input
+          className={`${className} flex-1 outline-none border-none p-2`}
+          id={id}
+          onBlur={onBlurHandler}
+          onChange={onChangeHandler}
+          onKeyDown={onKeyDownHandler}
+          placeholder={placeholder}
+          type={_type || 'text'}
+          value={value || ''}
+        />
+        {postfix}
+      </div>
     </div>
   );
 };
