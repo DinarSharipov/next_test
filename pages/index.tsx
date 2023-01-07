@@ -29,6 +29,7 @@ const HomePage: React.FC = () => {
           name="keywords"
         />
       </Head>
+      <Input.Date />
       <Button.Link
         className="p-2 bg-green-400 w-min rounded-md text-white font-bold"
         href="login"
@@ -38,11 +39,12 @@ const HomePage: React.FC = () => {
         <h1 className="text-xl">Поиск пользователей в Github</h1>
         <div>
           <div className="flex overflow-hidden rounded-md w-min">
-            <Input.Number
-              className="text-black p-1 outline-none"
+            <Input.Template
+              className="text-black p-1 outline-none flex-1 h-full"
               id="search"
               onChange={(value) => setSearchInputValue(value)}
               placeholder="имя пользователя"
+              template="+7 (***) - *** - ** - **"
               value={searchInputValue || ''}
             />
             <Button.Base
