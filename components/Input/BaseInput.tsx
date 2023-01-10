@@ -34,7 +34,7 @@ const BaseInput: React.FC<BaseInputProps> = ({
   return (
     <div className="flex flex-col">
       { label && <div>{label}</div> }
-      <div className="flex items-center flex-1">
+      <div className="flex items-stretch flex-1">
         <input
           className={`${className} flex-1 outline-none border-none p-2`}
           id={id}
