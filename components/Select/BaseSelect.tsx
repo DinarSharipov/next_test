@@ -3,11 +3,23 @@ import { useClickAway } from 'react-use';
 import BaseInput from '../Input/BaseInput';
 import ArrowDown from '../../assets/ArrowDown.svg';
 import { extractStyles } from '../../services/utils';
+import { BaseSelectProps } from './types';
 
-const BaseSelect: React.FC = () => {
+const BaseSelect: React.FC<BaseSelectProps> = ({
+  disabled,
+  label,
+  onChange,
+  onClear,
+  onClick,
+  onSelect,
+  options,
+  placeholder,
+  selectedOption,
+}) => {
   const [showOptions, setShowOptions] = useState(false);
   const ref = useMemo(() => createRef<HTMLDialogElement>(), []);
   const outsideClickRef = useMemo(() => createRef<HTMLDivElement>(), []);
+  const canShowOptions = options?.length && !disabled;
 
   useClickAway(outsideClickRef, () => {
     setShowOptions(false);
@@ -47,13 +59,15 @@ const BaseSelect: React.FC = () => {
             }
             onClick={openCloseHandler}
           >
-            <ArrowDown className={
-              extractStyles`
+            {canShowOptions && (
+              <ArrowDown className={
+                extractStyles`
                 transition-all pointer-events-none
                 ${showOptions ? 'rotate-0' : 'rotate-180'}
                 `
-            }
-            />
+              }
+              />
+            )}
           </div>
         )}
       />
