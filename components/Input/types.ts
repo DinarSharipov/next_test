@@ -10,5 +10,6 @@ export interface BaseInputProps {
   onChange?: (value: string)=> void;
   onBlur?: (value?: string)=> void;
   onKeyEnter?: ()=> void;
+  onClick?: ()=> void;
   _type?: 'text' | 'date';
 }

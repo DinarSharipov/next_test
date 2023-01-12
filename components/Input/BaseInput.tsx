@@ -7,6 +7,7 @@ const BaseInput: React.FC<BaseInputProps> = ({
   label,
   onBlur,
   onChange,
+  onClick,
   onKeyEnter,
   placeholder,
   value,
@@ -40,6 +41,7 @@ const BaseInput: React.FC<BaseInputProps> = ({
           id={id}
           onBlur={onBlurHandler}
           onChange={onChangeHandler}
+          onClick={onClick}
           onKeyDown={onKeyDownHandler}
           placeholder={placeholder}
           type={_type || 'text'}
