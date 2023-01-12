@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Button from '../components/Button';
 import { useSearchUsersQuery } from '../store/github/github.api';
 import Input from '../components/Input';
-import BaseSelect from '../components/Select/BaseSelect';
+import Dialog from '../components/Dialog/Dialog';
 
 const HomePage: React.FC = () => {
   const [searchInputValue, setSearchInputValue] = useState<string | undefined>();
@@ -62,8 +62,7 @@ const HomePage: React.FC = () => {
       </div>
       <div className="w-[700px] overflow-hidden flex gap-2">
 
-        <BaseSelect />
-        <BaseSelect />
+        <Dialog />
       </div>
       {data?.total_count && <h1 className="text-white">{`найдено: ${data.total_count} пользователей`}</h1>}
       <div className="grid grid-cols-3 gap-4 mt-4 overflow-y-auto">
