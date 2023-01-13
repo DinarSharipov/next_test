@@ -4,6 +4,7 @@ import BaseInput from '../Input/BaseInput';
 import ArrowDown from '../../assets/ArrowDown.svg';
 import { extractStyles } from '../../services/utils';
 import { BaseSelectProps } from './types';
+import Options from './Options';
 
 const BaseSelect: React.FC<BaseSelectProps> = ({
   disabled,
@@ -70,20 +71,19 @@ const BaseSelect: React.FC<BaseSelectProps> = ({
             )}
           </div>
         )}
+        value={selectedOption.label || ''}
       />
       <div className="relative">
         <dialog
           ref={ref}
-          className={
-            extractStyles`
-              absolute w-full left-0 top-[2px] bg-green-400 transition-all duration-200
-              origin-top rounded-md
-              ${showOptions ? 'opacity-100' : 'opacity-0'}
-              ${showOptions ? 'scale-y-100' : 'scale-y-0'}
-            `
-          }
+          className="w-full rounded-md top-[2px] p-0"
         >
-          content...
+          <Options
+            onClose={openCloseHandler}
+            onSelect={onSelect}
+            options={options}
+            selectedOption={selectedOption}
+          />
         </dialog>
       </div>
     </div>

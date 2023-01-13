@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Button from '../components/Button';
 import { useSearchUsersQuery } from '../store/github/github.api';
 import Input from '../components/Input';
-import Dialog from '../components/Dialog/Dialog';
 import BaseSelect from '../components/Select/BaseSelect';
 
 const HomePage: React.FC = () => {
@@ -21,6 +20,10 @@ const HomePage: React.FC = () => {
     setSearchInputValue(undefined);
     setSearchValue(undefined);
   };
+
+  const options = useMemo(() => Array.from({ length: 100 }, (_, i) => ({ label: `option${i}`, value: i.toString() })), []);
+
+  const [selected, setSelected] = useState(options[5]);
 
   return (
     <div className="flex flex-col bg-slate-700 p-2 h-screen">
@@ -62,7 +65,11 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <div className="w-[700px] overflow-hidden flex gap-2">
-        <BaseSelect />
+        <BaseSelect
+          onSelect={(o) => setSelected(o)}
+          options={options}
+          selectedOption={selected}
+        />
       </div>
       {data?.total_count && <h1 className="text-white">{`найдено: ${data.total_count} пользователей`}</h1>}
       <div className="grid grid-cols-3 gap-4 mt-4 overflow-y-auto">

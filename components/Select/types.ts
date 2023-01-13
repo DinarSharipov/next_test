@@ -19,3 +19,10 @@ export interface BaseSelectProps {
   onChange?: (value?: string)=>void;
   disabled?: boolean;
 }
+
+export interface OptionsProps {
+  options?: SelectOption[];
+  selectedOption?: SelectOption;
+  onSelect?: (option: SelectOption)=> void;
+  onClose?: ()=>void;
+}
