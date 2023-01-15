@@ -39,16 +39,26 @@ const BaseSelect: React.FC<BaseSelectProps> = ({
   const inputClickHandler = () => {
     setShowOptions(true);
     ref.current?.show();
+    onClick?.();
   };
+
+  const parentElWidth = outsideClickRef?.current?.parentElement?.clientWidth;
 
   return (
     <div
       ref={outsideClickRef}
-      className="flex flex-col fixed rounded-md"
+      className={
+        extractStyles`
+        flex flex-col fixed rounded-md
+        ${parentElWidth && `w-[${parentElWidth}px]`}`
+      }
     >
+      { label && <div className="pb-[2px]">{label}</div> }
       <BaseInput
         className="rounded-l-md"
+        onChange={onChange}
         onClick={inputClickHandler}
+        placeholder={placeholder}
         postfix={(
           <div
             className={
@@ -87,6 +97,7 @@ const BaseSelect: React.FC<BaseSelectProps> = ({
         </dialog>
       </div>
     </div>
+
   );
 };
 

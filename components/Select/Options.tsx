@@ -1,4 +1,6 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, {
+  createRef, useEffect, useState,
+} from 'react';
 import { extractStyles } from '../../services/utils';
 import { OptionsProps, SelectOption } from './types';
 
@@ -8,7 +10,12 @@ const Options: React.FC<OptionsProps> = ({
   selectedOption,
   onClose,
 }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | undefined>();
+  const [
+    hoveredIndex,
+    setHoveredIndex,
+  ] = useState<number | undefined>(
+    options.findIndex((option) => option.value === selectedOption.value),
+  );
   const optionsRef = createRef<HTMLDivElement>();
   const onSelectHandler = (option: SelectOption) => {
     if (onSelect) {
@@ -33,10 +40,11 @@ const Options: React.FC<OptionsProps> = ({
           setHoveredIndex(options.length - 1);
           return;
         }
-        setHoveredIndex(hoveredIndex + 1);
+        setHoveredIndex(hoveredIndex - 1);
         break;
       case 'Enter':
         onSelect?.(options[hoveredIndex]);
+        onClose?.();
         break;
       case 'Escape':
       case 'Tab':
@@ -47,19 +55,19 @@ const Options: React.FC<OptionsProps> = ({
     }
   };
 
-  const srollIntoViewHandler = () => {
-    const { current: element } = optionsRef;
-    if (element) {
-
-      // currentOption?.scrollIntoView({ block: 'nearest' });
+  /** Хэндлер удержания выбранного блока в области видимости контейнера опций */
+  const scrollToOptionHandler = () => {
+    if (hoveredIndex) {
+      optionsRef.current?.children?.[hoveredIndex]
+        ?.scrollIntoView({ block: 'nearest' });
     }
   };
 
   useEffect(() => {
-    srollIntoViewHandler();
+    scrollToOptionHandler();
     window.addEventListener('keydown', keydownHandler);
     return () => window.removeEventListener('keydown', keydownHandler);
-  }, []);
+  }, [hoveredIndex]);
 
   return (
     <div
@@ -81,7 +89,7 @@ const Options: React.FC<OptionsProps> = ({
                 `
               }
               onClick={() => onSelectHandler(option)}
-              onMouseLeave={() => setHoveredIndex(index)}
+              onMouseMove={() => setHoveredIndex(index)}
             >
               {option.label}
             </div>
