@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-[700px] overflow-hidden flex gap-2">
+      <div className="w-[400px] overflow-hidden flex gap-2">
         <BaseSelect
           onSelect={(o) => setSelected(o)}
           options={options}
