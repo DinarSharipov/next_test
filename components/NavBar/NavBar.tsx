@@ -12,8 +12,8 @@ const NavBar: React.FC = () => (
             title="Ссылка 1"
           />
           <Button.Link
-            href="/"
-            title="Ссылка 1"
+            href="Viewer"
+            title="ЗВА"
           />
           <Button.Link
             href="/"
