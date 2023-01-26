@@ -22,6 +22,7 @@
   "dependencies": {
     "@react-pdf-viewer/core": "^3.10.0",
     "@react-pdf-viewer/default-layout": "^3.10.0",
+    "@react-pdf-viewer/toolbar": "^3.10.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@svgr/webpack": "^6.5.1",
     "eslint": "^8.31.0",
