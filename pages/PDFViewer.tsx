@@ -13,7 +13,7 @@ const PDFViewer: React.FC = () => {
   return (
     <div>
       <input
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           if (e.target.files) {
             const url = URL.createObjectURL(e.target.files[0]);
             console.log(url);
