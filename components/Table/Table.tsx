@@ -48,7 +48,6 @@ const findArraysLength = (obj: Object) => {
             parseArray(array);
           }
         }
-        parseArray();
       }
     }
   };
