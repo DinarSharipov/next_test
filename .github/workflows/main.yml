@@ -12,8 +12,5 @@ jobs:
     - name: reposotory cloning
       uses: actions/checkout@v1
       
-    - name: build comand
-      run: npm run build
-      
     - name: log dir
       run: ls -la
