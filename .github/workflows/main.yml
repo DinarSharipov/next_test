@@ -9,5 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: reposotory cloning
+      uses: actions/checkout@v1
+      
     - name: build comand
       run: npm run build
+      
+    - name: log dir
+      run: ls -A
