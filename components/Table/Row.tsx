@@ -3,14 +3,15 @@ import { RowProps } from './types';
 
 const Row: React.FC<RowProps> = ({
   data,
+  columns,
 }) => (
   <tr>
-    {data?.map((item) => (
+    {columns?.map((item) => (
       <td
-        key={item.id}
+        key={item[data.key]}
         className="border-black border-[1px]"
       >
-        {item.header}
+        {item[data.header]}
       </td>
     ))}
   </tr>

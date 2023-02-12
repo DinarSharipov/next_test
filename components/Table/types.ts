@@ -5,5 +5,6 @@ export type Column = {
 };
 
 export interface RowProps {
-  data: Column[];
+  data: Column;
+  columns?: Column[];
 }
