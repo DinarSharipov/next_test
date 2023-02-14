@@ -15,5 +15,7 @@ export const useChangeObserver = (object: Object) => {
     set: changePipe,
   });
 
-  return { isDirty, proxyObject };
+  const resetIsDirty = () => setIsDirty(false);
+
+  return { isDirty, proxyObject, resetIsDirty };
 };
