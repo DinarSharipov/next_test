@@ -24,10 +24,9 @@ const Accordion: React.FC<AccordionProps> = ({
           items?.length && items.map(({ component, id, isOpen }) => (
             <AccordionItem
               key={id}
-              onClick={() => onChange(id)}
-            >
-              {isOpen && component}
-            </AccordionItem>
+              onClick={(id) => onChange(id)}
+              title={id}
+            />
           ))
         }
       </div>
