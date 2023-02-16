@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { AccordionProps } from './types';
 
+export const AccordionItem: React.FC<{
+  title: string; onClick: (id: string)=> void; id: string; }> = ({ title, onClick, id }) => (
+  <div onClick={() => onClick(id)}>
+      {title}
+
+    </div>
+);
+
 const Accordion: React.FC<AccordionProps> = ({
   items,
   onChange,
@@ -14,12 +22,12 @@ const Accordion: React.FC<AccordionProps> = ({
       <div>
         {
           items?.length && items.map(({ component, id, isOpen }) => (
-            <div
+            <AccordionItem
               key={id}
               onClick={() => onChange(id)}
             >
               {isOpen && component}
-            </div>
+            </AccordionItem>
           ))
         }
       </div>
