@@ -26,7 +26,7 @@ const GitHubPage: React.FC = () => {
         <div>
           <div className="flex overflow-hidden rounded-md w-min">
             <Input.Base
-              className="text-black p-1 outline-none flex-1 h-full"
+              className="text-black p-1 outline-none flex-1 h-full shadow-lg border-1 border-black"
               id="search"
               onChange={(value) => setSearchInputValue(value)}
               placeholder="имя пользователя"
