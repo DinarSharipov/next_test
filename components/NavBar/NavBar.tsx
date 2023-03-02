@@ -12,20 +12,8 @@ const NavBar: React.FC = () => (
             title="Ссылка 1"
           />
           <Button.Link
-            href="Viewer"
-            title="ЗВА"
-          />
-          <Button.Link
-            href="/"
-            title="Ссылка 1"
-          />
-          <Button.Link
-            href="/"
-            title="Ссылка 1"
-          />
-          <Button.Link
-            href="/Table"
-            title="Таблица"
+            href="/GitHubPage"
+            title="GitHubPage"
           />
         </ul>
       </div>
