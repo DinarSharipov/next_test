@@ -10,10 +10,12 @@ const GitHubPage: React.FC = () => {
 
   const canShowResults = isSuccess && data?.items?.length;
 
+  /** Поиск */
   const searchUsersHandler = () => {
     setSearchValue(searchInputValue);
   };
 
+  /** Очистить значение поисковой строки */
   const clearSearchValuesHandler = () => {
     setSearchInputValue(undefined);
     setSearchValue(undefined);
@@ -47,38 +49,36 @@ const GitHubPage: React.FC = () => {
       </div>
       {data?.total_count && <h1 className="text-white">{`найдено: ${data.total_count} пользователей`}</h1>}
       <div className="grid grid-cols-3 gap-4 mt-4 overflow-y-auto">
-        {
-          canShowResults
-            ? data.items.map((user) => (
-              <div
-                key={user.id}
-                className="
+        {canShowResults
+          ? data.items.map((user) => (
+            <div
+              key={user.id}
+              className="
               flex p-2 bg-green-400 rounded-sm
               hover:scale-105 transition-all gap-2
               shadow-[0px_0px_3px] shadow-green-200
               "
-              >
-                <div className="flex flex-col">
-                  <div className="font-bold w-min box-border">{user.login}</div>
-                  <img
-                    alt="avatar"
-                    className="w-[100px]"
-                    src={user.avatar_url}
-                  />
-                </div>
-                <div>
-                  <div className="font-bold">Информация</div>
-                  <div>
-                    ID:
-                    {' '}
-                    { user.id }
-                  </div>
-                  <div>{user.type}</div>
-                </div>
+            >
+              <div className="flex flex-col">
+                <div className="font-bold w-min box-border">{user.login}</div>
+                <img
+                  alt="avatar"
+                  className="w-[100px]"
+                  src={user.avatar_url}
+                />
               </div>
-            ))
-            : <div>Ничего не найдено</div>
-        }
+              <div>
+                <div className="font-bold">Информация</div>
+                <div>
+                  ID:
+                  {' '}
+                  { user.id }
+                </div>
+                <div>{user.type}</div>
+              </div>
+            </div>
+          ))
+          : <div>Ничего не найдено</div>}
       </div>
     </>
   );
